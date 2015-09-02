@@ -27,8 +27,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomasr/molokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-fugitive'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -45,5 +48,11 @@ colorscheme molokai
 
 " Displays line numbers
 set number
+
 " Make tab insert 4 spaces instead
-set expandtab tabstop=4
+set tabstop=4 shiftwidth=4 expandtab
+
+" Fuzzy Finder config
+map <C-p> :FufFile<CR>
+map <A-C-p> :FufMruFile<CR>
+
