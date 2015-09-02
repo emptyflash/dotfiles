@@ -32,6 +32,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'ashwin/vim-powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -56,3 +57,6 @@ set tabstop=4 shiftwidth=4 expandtab
 map <C-p> :FufFile<CR>
 map <A-C-p> :FufMruFile<CR>
 
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+let g:Powerline_symbols = 'fancy'
