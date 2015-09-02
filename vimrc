@@ -1,4 +1,4 @@
-" A minimal vimrc for new vim users to start with.
+"A minimal vimrc for new vim users to start with.
 "
 " Referenced here: http://www.benorenstein.com/blog/your-first-vimrc-should-be-nearly-empty/
 
@@ -16,13 +16,34 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Stuff to setup Vundle
+filetype off 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tomasr/molokai'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+
+" Enable file type detection and do language-dependent indenting.
+filetype plugin indent on
+
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 
 " Switch syntax highlighting on
 syntax on
+colorscheme molokai
 
-" Enable file type detection and do language-dependent indenting.
-filetype plugin indent on
-
+" Displays line numbers
 set number
+" Make tab insert 4 spaces instead
+set expandtab tabstop=4
