@@ -28,11 +28,15 @@ Plugin 'tomasr/molokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'L9'
-Plugin 'FuzzyFinder'
+Plugin 'kien/ctrlp.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -53,9 +57,8 @@ set number
 " Make tab insert 4 spaces instead
 set tabstop=4 shiftwidth=4 expandtab
 
-" Fuzzy Finder config
-map <C-p> :FufFile<CR>
-map <A-C-p> :FufMruFile<CR>
+map <C-p> :CtrlP<CR>
+map <C-P> :NERDTreeToggle<CR>
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -69,3 +72,26 @@ map <C-L> <C-W>l
 
 " Control + C closes the current window
 map <C-C> <C-W>c
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+" JSHint and JSCS checker per project settings
+autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
+" PEP 8
+let g:syntastic_python_checkers = ['pep8']
+" Turn off automatic checking and set to F5
+let g:syntastic_mode_map = { 'mode': 'passive',     
+                          \ 'active_filetypes': [],     
+                          \ 'passive_filetypes': [] } 
+nnoremap <silent> <F5> :SyntasticCheck<CR>
+
+" Set swap files to be stored in ~/tmp
+set swapfile
+set dir=~/tmp 
