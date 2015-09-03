@@ -33,7 +33,6 @@ Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'wincent/Command-T'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
