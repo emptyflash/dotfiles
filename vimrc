@@ -58,7 +58,7 @@ set number
 set tabstop=4 shiftwidth=4 expandtab
 
 map <C-p> :CtrlP<CR>
-map <C-P> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
