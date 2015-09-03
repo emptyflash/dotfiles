@@ -33,6 +33,7 @@ Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'wincent/Command-T'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -60,3 +61,12 @@ map <A-C-p> :FufMruFile<CR>
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 let g:Powerline_symbols = 'fancy'
+
+" Map control + direction keys to move windows
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+
+" Control + C closes the current window
+map <C-C> <C-W>c
