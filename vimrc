@@ -37,6 +37,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'michaeljsmith/vim-indent-object'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -77,21 +78,32 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Recommended syntastic settings
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
+let g:syntastic_aggregate_errors = 1 " We need this to display both JSHint and JSCS errors
+
 " JSHint and JSCS checker per project settings
-autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
+" autocmd FileType javascript let b:syntastic_checkers = glob('find */.jscsrc') != '' ? ['jscs', 'jshint'] : ['jshint']
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+
 " PEP 8
 let g:syntastic_python_checkers = ['pep8']
-" Turn off automatic checking and set to F5
-let g:syntastic_mode_map = { 'mode': 'passive',     
-                          \ 'active_filetypes': [],     
-                          \ 'passive_filetypes': [] } 
-nnoremap <silent> <F5> :SyntasticCheck<CR>
+let g:syntastic_python_pep8_args='--ignore=E501'
 
 " Set swap files to be stored in ~/tmp
 set swapfile
 set dir=~/tmp 
+
+" Leader commands
+map <leader>v :e $MYVIMRC<CR> 
+map <leader>g :w !gulp<CR>
+map <leader>k :w !gulp karma<CR>
+map <leader>d :w !gulp djtest<CR>
+map <leader>s :w !gulp djtest --
+map <leader>m :w !gulp migrate<CR>
+map <leader>k :w !gulp killserver<CR>
+
+imap <C-Space> <Esc>
