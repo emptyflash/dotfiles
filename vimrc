@@ -32,7 +32,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'ashwin/vim-powerline'
+Plugin 'Lokaltog/vim-powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
