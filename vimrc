@@ -88,6 +88,7 @@ let g:syntastic_aggregate_errors = 1 " We need this to display both JSHint and J
 " JSHint and JSCS checker per project settings
 " autocmd FileType javascript let b:syntastic_checkers = glob('find */.jscsrc') != '' ? ['jscs', 'jshint'] : ['jshint']
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_javascript_jscs_args = "-c /vagrant/angular/.jscsrc"
 
 " PEP 8
 let g:syntastic_python_checkers = ['pep8']
