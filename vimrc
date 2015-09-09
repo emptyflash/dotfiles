@@ -72,10 +72,10 @@ map <C-H> <C-W><
 map <C-L> <C-W>>
 
 " Map control shift + direction keys to resize windows
-map <Leader>j <C-W>j
-map <Leader>k <C-W>k
-map <Leader>h <C-W>h
-map <Leader>l <C-W>l
+map <Tab>j <C-W>j
+map <Tab>k <C-W>k
+map <Tab>h <C-W>h
+map <Tab>l <C-W>l
 
 " Control + C closes the current window
 map <C-C> <C-W>c
