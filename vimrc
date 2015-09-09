@@ -36,8 +36,9 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'derekwyatt/vim-sbt'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -63,13 +64,18 @@ map <C-t> :NERDTreeToggle<CR>
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
-let g:Powerline_symbols = 'fancy'
 
 " Map control + direction keys to move windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+map <C-J> <C-W>-
+map <C-K> <C-W>+
+map <C-H> <C-W><
+map <C-L> <C-W>>
+
+" Map control shift + direction keys to resize windows
+map <Leader>j <C-W>j
+map <Leader>k <C-W>k
+map <Leader>h <C-W>h
+map <Leader>l <C-W>l
 
 " Control + C closes the current window
 map <C-C> <C-W>c
@@ -107,3 +113,10 @@ map <leader>m :w !gulp migrate<CR>
 map <leader>k :w !gulp killserver<CR>
 
 imap <C-Space> <Esc>
+
+set guifont=Hack
+set mouse=c        "disable mouse click
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
