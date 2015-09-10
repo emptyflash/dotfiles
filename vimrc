@@ -66,10 +66,16 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 let g:Powerline_symbols = 'fancy'
 
 " Map control + direction keys to move windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+map <C-J> <C-W>-
+map <C-K> <C-W>+
+map <C-H> <C-W><
+map <C-L> <C-W>>
+"
+" " Map control shift + direction keys to resize windows
+map <Tab>j <C-W>j
+map <Tab>k <C-W>k
+map <Tab>h <C-W>h
+map <Tab>l <C-W>l
 
 " Control + C closes the current window
 map <C-C> <C-W>c
