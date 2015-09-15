@@ -111,6 +111,5 @@ map <leader>k :w !gulp karma<CR>
 map <leader>d :w !gulp djtest<CR>
 map <leader>s :w !gulp djtest --
 map <leader>m :w !gulp migrate<CR>
-map <leader>k :w !gulp killserver<CR>
 
 imap <C-Space> <Esc>
