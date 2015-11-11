@@ -16,6 +16,8 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+let mapleader = "\<Tab>"
+
 " Stuff to setup Vundle
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -38,6 +40,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'wesQ3/vim-windowswap'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -72,13 +75,15 @@ map <C-H> <C-W><
 map <C-L> <C-W>>
 "
 " " Map control shift + direction keys to resize windows
-map <Tab>j <C-W>j
-map <Tab>k <C-W>k
-map <Tab>h <C-W>h
-map <Tab>l <C-W>l
+map <Leader>j <C-W>j
+map <Leader>k <C-W>k
+map <Leader>h <C-W>h
+map <Leader>l <C-W>l
 
 " Control + C closes the current window
 map <C-C> <C-W>c
+
+imap ,, <Esc>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -106,10 +111,3 @@ set dir=~/tmp
 
 " Leader commands
 map <leader>v :e $MYVIMRC<CR> 
-map <leader>g :w !gulp<CR>
-map <leader>k :w !gulp karma<CR>
-map <leader>d :w !gulp djtest<CR>
-map <leader>s :w !gulp djtest --
-map <leader>m :w !gulp migrate<CR>
-
-imap <C-Space> <Esc>
