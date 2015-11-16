@@ -16,6 +16,8 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+let mapleader = "\<Tab>"
+
 " Stuff to setup Vundle
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -38,6 +40,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'wesQ3/vim-windowswap'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -72,13 +75,16 @@ map <C-H> <C-W><
 map <C-L> <C-W>>
 "
 " " Map control shift + direction keys to resize windows
-map <Tab>j <C-W>j
-map <Tab>k <C-W>k
-map <Tab>h <C-W>h
-map <Tab>l <C-W>l
+map <Leader>j <C-W>j
+map <Leader>k <C-W>k
+map <Leader>h <C-W>h
+map <Leader>l <C-W>l
 
 " Control + C closes the current window
 map <C-C> <C-W>c
+
+" Map double comma to escape for convenience
+imap ,, <Esc>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -100,16 +106,19 @@ let g:syntastic_javascript_jscs_args = "-c /vagrant/angular/.jscsrc"
 let g:syntastic_python_checkers = ['pep8']
 let g:syntastic_python_pep8_args='--ignore=E501'
 
+" CtrlP settings
+let g:ctrlp_switch_buffer = 'Et'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+set wildignore+=*/.git/**
+set wildignore+=*/.vagrant/**
+map <F5> :CtrlPClearAllCaches<CR>
+
 " Set swap files to be stored in ~/tmp
 set swapfile
 set dir=~/tmp 
-
-" Leader commands
-map <leader>v :e $MYVIMRC<CR> 
-map <leader>g :w !gulp<CR>
-map <leader>k :w !gulp karma<CR>
-map <leader>d :w !gulp djtest<CR>
-map <leader>s :w !gulp djtest --
-map <leader>m :w !gulp migrate<CR>
 
 imap <C-Space> <Esc>
