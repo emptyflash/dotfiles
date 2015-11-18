@@ -80,6 +80,17 @@ map <Leader>k <C-W>k
 map <Leader>h <C-W>h
 map <Leader>l <C-W>l
 
+map <Leader>v :e $MYVIMRC<CR> 
+
+map <Leader><Leader>n :tabnew<CR>
+map <Leader><Leader>m :tabm 
+map <Leader><Leader>l :tabn<CR>
+map <Leader><Leader>h :tabp<CR>
+map <Leader><Leader>j :tabn 
+map <Leader><Leader>c :tabclose<CR>
+map <Leader><Leader>1 :tabfirst<CR>
+map <Leader><Leader>0 :tablast<CR>
+
 " Control + C closes the current window
 map <C-C> <C-W>c
 
@@ -120,5 +131,3 @@ map <F5> :CtrlPClearAllCaches<CR>
 " Set swap files to be stored in ~/tmp
 set swapfile
 set dir=~/tmp 
-
-imap <C-Space> <Esc>
