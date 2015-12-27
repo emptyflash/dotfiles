@@ -41,6 +41,8 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wesQ3/vim-windowswap'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -117,6 +119,10 @@ let g:syntastic_javascript_jscs_args = "-c /vagrant/angular/.jscsrc"
 let g:syntastic_python_checkers = ['pep8']
 let g:syntastic_python_pep8_args='--ignore=E501'
 
+" Scala
+let g:syntastic_ignore_files = ['\m\.sbt$']
+let g:syntastic_scala_checkers = ['fsc']
+
 " CtrlP settings
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_clear_cache_on_exit = 0
@@ -131,3 +137,11 @@ map <F5> :CtrlPClearAllCaches<CR>
 " Set swap files to be stored in ~/tmp
 set swapfile
 set dir=~/tmp 
+
+" Set to 256 color for ubunutu
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+" Eclim
+map <Leader>e :!$ECLIPSE_HOME/eclimd<CR>
