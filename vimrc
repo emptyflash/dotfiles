@@ -43,6 +43,8 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-markdown'
+Plugin 'elmcast/elm-vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -127,9 +129,7 @@ let g:syntastic_scala_checkers = ['fsc']
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 set wildignore+=*/.git/**
 set wildignore+=*/.vagrant/**
 map <F5> :CtrlPClearAllCaches<CR>
