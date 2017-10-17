@@ -37,7 +37,7 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
 
 (use-package fiplr)
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
+(global-set-key (kbd "C-x f") 'fiplr-find-file-with-gitignore)
 
 (use-package neotree)
 (global-set-key (kbd "C-x t") 'neotree-toggle)
@@ -48,12 +48,25 @@
 (global-set-key (kbd "C-c k")    'windmove-up)
 (global-set-key (kbd "C-c j")  'windmove-down)
 
-(use-package key-chord)
-(key-chord-define evil-normal-state-map ",," 'evil-force-normal-state)
-(key-chord-define evil-visual-state-map ",," 'evil-change-to-previous-state)
-(key-chord-define evil-insert-state-map ",," 'evil-normal-state)
-(key-chord-define evil-replace-state-map ",," 'evil-normal-state)
-(key-chord-mode +1)
+;(use-package key-chord)
+;(key-chord-define evil-normal-state-map ",," 'evil-force-normal-state)
+;(key-chord-define evil-visual-state-map ",," 'evil-change-to-previous-state)
+;(key-chord-define evil-insert-state-map ",," 'evil-normal-state)
+;(key-chord-define evil-replace-state-map ",," 'evil-normal-state)
+;(key-chord-mode +1)
+
+(bind-key* "C-e" 'evil-force-normal-state)
+
+(use-package elixir-mode)
+
+
+(defun x-select-text (text))
+(setq x-select-enable-clipboard nil)
+(setq x-select-enable-primary nil)
+(setq mouse-drag-copy-region nil)
+
+(setq interprogram-cut-function 'ns-set-pasteboard)
+(setq interprogram-paste-function 'ns-get-pasteboard)
 
 
 (defun custom-web-mode-hook ()
