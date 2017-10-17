@@ -1,5 +1,6 @@
 git pull
 ln -s ~/dotfiles/vimrc ~/.vimrc
-ln -s ~/dotfiles/vimrc ~/init.vim
+mkdir -p ~/.config/nvim
+ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
 ln -s ~/dotfiles/init.el ~/.emacs.d/init.el
 vim +PluginInstall +qall
