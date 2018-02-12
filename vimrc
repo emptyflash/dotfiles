@@ -17,6 +17,7 @@
 set nocompatible
 
 let mapleader = "\<Tab>"
+let maplocalleader = "\\"
 
 " Stuff to setup Vundle
 filetype off 
@@ -38,7 +39,6 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'derekwyatt/vim-scala'
@@ -53,6 +53,8 @@ Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-salve'
 Plugin 'rust-lang/rust.vim'
+Plugin 'idris-hackers/idris-vim'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -107,7 +109,7 @@ map <Leader><Leader>0 :tablast<CR>
 map <C-C> <C-W>c
 
 " Map double comma to escape for convenience
-imap ,, <Esc>
+imap <C-e> <Esc>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

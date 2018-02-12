@@ -64,7 +64,8 @@
 
 (add-hook 'web-mode-hook  'custom-web-mode-hook)
 
-(load-theme 'noctilux t)
+;(use-package noctilux)
+;(load-theme 'noctilux t)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)

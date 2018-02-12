@@ -114,3 +114,4 @@ if ! shopt -oq posix; then
 fi
 export LANG=C.UTF-8
 export PATH=$PATH:~/bin
+export PATH=$PATH:~/.cabal/bin
