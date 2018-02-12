@@ -15,6 +15,7 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+set shell=bash
 
 let mapleader = "\<Tab>"
 let maplocalleader = "\\"
@@ -27,7 +28,6 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tomasr/molokai'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-fugitive'
@@ -35,7 +35,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
@@ -55,6 +54,15 @@ Plugin 'tpope/vim-salve'
 Plugin 'rust-lang/rust.vim'
 Plugin 'idris-hackers/idris-vim'
 Plugin 'fatih/vim-go'
+Plugin 'ensime/ensime-vim'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'vim-airline/vim-airline'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'idris-hackers/idris-vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'Shougo/vimproc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -67,7 +75,9 @@ set backspace=indent,eol,start
 
 " Switch syntax highlighting on
 syntax on
-colorscheme molokai
+set background=dark
+set termguicolors
+colorscheme quantum
 
 " Displays line numbers
 set number
@@ -110,6 +120,11 @@ map <C-C> <C-W>c
 
 " Map double comma to escape for convenience
 imap <C-e> <Esc>
+<<<<<<< HEAD
+=======
+
+autocmd FileType elixir map <Leader>t :!mix test<CR>
+>>>>>>> 54db62691a261a6ce7f1e4af8264deca55cbfa64
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -134,6 +149,19 @@ let g:syntastic_python_pep8_args='--ignore=E501'
 " Scala
 let g:syntastic_ignore_files = ['\m\.sbt$']
 let g:syntastic_scala_checkers = ['fsc']
+autocmd BufWritePost *.scala silent :EnTypeCheck
+au FileType scala nnoremap <Leader>ec :EnTypeCheck<CR>
+au FileType scala nnoremap <Leader>t :!sbt test<CR>
+au FileType scala nnoremap <Leader>ed :EnDeclaration<CR>
+au FileType scala nnoremap <Leader>evd :EnDeclarationSplit v<CR>
+au FileType scala nnoremap <Leader>ehd :EnDeclarationSplit<CR>
+au FileType scala nnoremap <Leader>er :!sbt ensimeConfig<CR>
+au FileType scala nnoremap <Leader>ei :EnInstall<CR>
+au FileType scala nnoremap <Leader>et :EnType<CR>
+au FileType scala nnoremap <Leader>es :EnSearch 
+au FileType scala nnoremap <Leader>esi :EnSuggestImport<CR>
+au FileType scala nnoremap <Leader>eoi :EnOrganizeImports<CR>
+
 
 " CtrlP settings
 let g:ctrlp_switch_buffer = 'Et'
@@ -152,9 +180,6 @@ set dir=~/tmp
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
-
-" Eclim
-map <Leader>e :!$ECLIPSE_HOME/eclimd<CR>
 
 let g:elm_format_autosave = 1
 
@@ -184,3 +209,34 @@ let g:rbpt_colorpairs = [
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+
+" Enable Deoplete for auto completion
+let g:deoplete#enable_at_startup = 1
+
+" Disable mouse
+set mouse=
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='quantum'
+
+" set cursorcolumn
+set cursorline
+
+let g:alchemist_tag_disable = 1
+
+call deoplete#custom#set('buffer', 'min_pattern_length', 2)
+
+" Enable window changing in terminal mode
+:tnoremap <Leader>h <C-\><C-n><C-w>h
+:tnoremap <Leader>j <C-\><C-n><C-w>j
+:tnoremap <Leader>k <C-\><C-n><C-w>k
+:tnoremap <Leader>l <C-\><C-n><C-w>l
+
+" Enable esc and ctrl-e to enter normal mode in terminal
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <C-e> <C-\><C-n>
+
+" Use + register as system clipboard
+set clipboard+=unnamedplus
+
