@@ -120,11 +120,8 @@ map <C-C> <C-W>c
 
 " Map double comma to escape for convenience
 imap <C-e> <Esc>
-<<<<<<< HEAD
-=======
 
 autocmd FileType elixir map <Leader>t :!mix test<CR>
->>>>>>> 54db62691a261a6ce7f1e4af8264deca55cbfa64
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
