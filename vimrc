@@ -221,7 +221,6 @@ set cursorline
 
 let g:alchemist_tag_disable = 1
 
-call deoplete#custom#set('buffer', 'min_pattern_length', 2)
 
 " Enable window changing in terminal mode
 :tnoremap <Leader>h <C-\><C-n><C-w>h
