@@ -62,6 +62,7 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'alfredodeza/pytest.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -121,6 +122,9 @@ map <C-C> <C-W>c
 imap <C-e> <Esc>
 
 autocmd FileType elixir map <Leader>t :!mix test<CR>
+
+autocmd FileType python map <Leader>t :Pytest file<CR>
+autocmd FileType python map <Leader><Leader>t :Pytest function<CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -235,3 +239,7 @@ let g:alchemist_tag_disable = 1
 " Use + register as system clipboard
 set clipboard+=unnamedplus
 
+augroup NoUndoUlysses
+    autocmd!
+    autocmd BufWritePre *boxer-*.yaml setlocal noundofile
+augroup END
