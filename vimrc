@@ -62,8 +62,12 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
+<<<<<<< HEAD
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'tidalcycles/vim-tidal'
+=======
+Plugin 'alfredodeza/pytest.vim'
+>>>>>>> 888d17f60b1cff8549223a30d473140839bb89f1
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -123,6 +127,9 @@ map <C-C> <C-W>c
 imap <C-e> <Esc>
 
 autocmd FileType elixir map <Leader>t :!mix test<CR>
+
+autocmd FileType python map <Leader>t :Pytest file<CR>
+autocmd FileType python map <Leader><Leader>t :Pytest function<CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -249,3 +256,8 @@ map  <c-s> :TidalSend<cr>
 map <c-h> :TidalHush<cr>
 
 map <Leader><Leader>t :hi Normal guibg=NONE ctermbg=NONE<CR>
+
+augroup NoUndoUlysses
+    autocmd!
+    autocmd BufWritePre *boxer-*.yaml setlocal noundofile
+augroup END
