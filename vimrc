@@ -62,6 +62,8 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'tikhomirov/vim-glsl'
+Plugin 'tidalcycles/vim-tidal'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -221,7 +223,8 @@ set cursorline
 
 let g:alchemist_tag_disable = 1
 
-call deoplete#custom#set('buffer', 'min_pattern_length', 2)
+" TODO: This is deprecated, should use source instead
+" call deoplete#custom#set('buffer', 'min_pattern_length', 2)
 
 " Enable window changing in terminal mode
 :tnoremap <Leader>h <C-\><C-n><C-w>h
@@ -236,3 +239,13 @@ call deoplete#custom#set('buffer', 'min_pattern_length', 2)
 " Use + register as system clipboard
 set clipboard+=unnamedplus
 
+map <LocalLeader>t :vert new<CR>:term<CR>i
+
+let g:syntastic_go_checkers = ['go', 'errcheck']
+
+let g:tidal_no_mappings = 1
+let g:tidal_target = "terminal"
+map  <c-s> :TidalSend<cr>
+map <c-h> :TidalHush<cr>
+
+map <Leader><Leader>t :hi Normal guibg=NONE ctermbg=NONE<CR>
