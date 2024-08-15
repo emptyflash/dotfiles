@@ -62,12 +62,11 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
-<<<<<<< HEAD
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'tidalcycles/vim-tidal'
-=======
 Plugin 'alfredodeza/pytest.vim'
->>>>>>> 888d17f60b1cff8549223a30d473140839bb89f1
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'davidgranstrom/scnvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -252,7 +251,7 @@ let g:syntastic_go_checkers = ['go', 'errcheck']
 
 let g:tidal_no_mappings = 1
 let g:tidal_target = "terminal"
-map  <c-s> :TidalSend<cr>
+map  <c-s> <Plug>TidalParagraphSend
 map <c-h> :TidalHush<cr>
 
 map <Leader><Leader>t :hi Normal guibg=NONE ctermbg=NONE<CR>
@@ -261,3 +260,15 @@ augroup NoUndoUlysses
     autocmd!
     autocmd BufWritePre *boxer-*.yaml setlocal noundofile
 augroup END
+
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+
+let g:OmniSharp_server_use_mono = 1
+
+autocmd BufNewFile,BufRead *.yin set syntax=haskell
+
+let g:scnvim_no_mappings = 1
+map <F4> <Plug>(scnvim-send-block)
+map <F12> <Plug>(scnvim-hard-stop)
+map <F3> <Plug>(scnvim-show-signature)	
+map <F2> :SCNvimStart<CR>
