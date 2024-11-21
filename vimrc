@@ -90,7 +90,7 @@ set number
 set tabstop=4 shiftwidth=4 expandtab
 
 map <C-p> :CtrlP<CR>
-map <C-t> :NERDTreeToggle<CR>
+noremap <C-t> :NERDTreeToggle<CR>
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -251,8 +251,8 @@ let g:syntastic_go_checkers = ['go', 'errcheck']
 
 let g:tidal_no_mappings = 1
 let g:tidal_target = "terminal"
-map  <c-s> <Plug>TidalParagraphSend
-map <c-h> :TidalHush<cr>
+"map  <c-s> <Plug>TidalParagraphSend
+"map <c-h> :TidalHush<cr>
 
 map <Leader><Leader>t :hi Normal guibg=NONE ctermbg=NONE<CR>
 
@@ -272,3 +272,11 @@ map <F4> <Plug>(scnvim-send-block)
 map <F12> <Plug>(scnvim-hard-stop)
 map <F3> <Plug>(scnvim-show-signature)	
 map <F2> :SCNvimStart<CR>
+
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_typescriptreact_checkers = ['tsuquyomi']
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
+map [[ <Plug>(TsuquyomiGoBack)
+map ]] <Plug>(TsuquyomiDefinition)

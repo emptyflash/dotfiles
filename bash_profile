@@ -1,9 +1,5 @@
 source ~/.bash_secrets
-
-if [ -f ~/.aws/jwp-scripts/aws.sh ]; then
-    source ~/.aws/jwp-scripts/aws.sh
-    export JWP_AWS_SCRIPT=~/.aws/jwp-scripts/aws.sh
-fi
+source ~/.nvm/nvm.sh
 
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:~/.local/bin
