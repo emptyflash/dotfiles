@@ -17,59 +17,71 @@
 set nocompatible
 set shell=bash
 
+filetype off
+
 let mapleader = "\<Tab>"
 let maplocalleader = "\\"
 
-" Stuff to setup Vundle
-filetype off 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'nanotech/jellybeans.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/matchit.zip'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'wesQ3/vim-windowswap'
+Plug 'derekwyatt/vim-scala'
+Plug 'tpope/vim-markdown'
+Plug 'elmcast/elm-vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-salve'
+Plug 'rust-lang/rust.vim'
+Plug 'idris-hackers/idris-vim'
+Plug 'fatih/vim-go'
+Plug 'Shougo/deoplete.nvim'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'vim-airline/vim-airline'
+Plug 'slashmili/alchemist.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'tikhomirov/vim-glsl'
+Plug 'tidalcycles/vim-tidal'
+Plug 'alfredodeza/pytest.vim'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'davidgranstrom/scnvim'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'wesQ3/vim-windowswap'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'tpope/vim-markdown'
-Plugin 'elmcast/elm-vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-fireplace'
-Plugin 'guns/vim-clojure-static'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-salve'
-Plugin 'rust-lang/rust.vim'
-Plugin 'idris-hackers/idris-vim'
-Plugin 'fatih/vim-go'
-Plugin 'ensime/ensime-vim'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'vim-airline/vim-airline'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'tidalcycles/vim-tidal'
-Plugin 'alfredodeza/pytest.vim'
-Plugin 'OmniSharp/omnisharp-vim'
-Plugin 'davidgranstrom/scnvim'
+" avante.nvim setup
+" Deps
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()
+" Optional deps
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+
+" All of your Plugs must be added before the following line
+call plug#end()
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -280,3 +292,17 @@ autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
 map [[ <Plug>(TsuquyomiGoBack)
 map ]] <Plug>(TsuquyomiDefinition)
+
+lua << EOF
+require('avante').setup({
+    provider = "deepseek",
+    vendors = {
+        deepseek = {
+            __inherited_from = "openai",
+            api_key_name = "DEEPSEEK_API_KEY",
+            endpoint = "https://api.deepseek.com",
+            model = "deepseek-coder",
+        },
+    },
+})
+EOF
