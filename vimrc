@@ -55,8 +55,8 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'vim-airline/vim-airline'
 Plug 'slashmili/alchemist.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Quramy/tsuquyomi'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tidalcycles/vim-tidal'
 Plug 'alfredodeza/pytest.vim'
@@ -77,7 +77,12 @@ Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
 Plug 'HakonHarnes/img-clip.nvim'
 Plug 'zbirenbaum/copilot.lua'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'ravitemer/mcphub.nvim', { 'do': 'npm install -g mcp-hub@latest' }
+
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+Plug 'NLKNguyen/papercolor-theme'
 
 
 " All of your Plugs must be added before the following line
@@ -93,7 +98,7 @@ set backspace=indent,eol,start
 syntax on
 set background=dark
 set termguicolors
-colorscheme quantum
+colorscheme PaperColor
 
 " Displays line numbers
 set number
@@ -254,9 +259,6 @@ let g:alchemist_tag_disable = 1
 :tnoremap <Esc> <C-\><C-n>
 :tnoremap <C-e> <C-\><C-n>
 
-" Use + register as system clipboard
-set clipboard+=unnamedplus
-
 map <LocalLeader>t :vert new<CR>:term<CR>i
 
 let g:syntastic_go_checkers = ['go', 'errcheck']
@@ -296,13 +298,60 @@ map ]] <Plug>(TsuquyomiDefinition)
 lua << EOF
 require('avante').setup({
     provider = "deepseek",
-    vendors = {
+    providers = {
         deepseek = {
             __inherited_from = "openai",
             api_key_name = "DEEPSEEK_API_KEY",
             endpoint = "https://api.deepseek.com",
             model = "deepseek-coder",
         },
+        claude = {
+            endpoint = "https://api.anthropic.com",
+            model = "claude-sonnet-4-20250514",
+        },
+        moonshot = {
+            endpoint = "https://api.moonshot.ai/v1",
+            model = "kimi-k2-0905-preview",
+        },
     },
+    -- We should use the tools provided by mcphub
+    disabled_tools = {
+        "list_files",    -- Built-in file operations
+        "search_files",
+        "read_file",
+        "create_file",
+        "rename_file",
+        "delete_file",
+        "create_dir",
+        "rename_dir",
+        "delete_dir",
+    },
+    mappings = {
+        sidebar = {
+            switch_windows = 'fuck you',
+        },
+    },
+    override_prompt_dir = vim.fn.expand("~/.config/nvim/avante_prompts"),
+    system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub and hub:get_active_servers_prompt() or ""
+    end,
+    -- Using function prevents requiring mcphub before it's loaded
+    custom_tools = function()
+        return {
+            require("mcphub.extensions.avante").mcp_tool(),
+        }
+    end,
+})
+
+require("mcphub").setup({
+    config = vim.fn.expand("~/.config/mcphub/servers.json"),
+    extensions = {
+        avante = {
+            make_slash_commands = true, -- make /slash commands from MCP server prompts
+        }
+    }
 })
 EOF
+
+set cb=unnamedplus

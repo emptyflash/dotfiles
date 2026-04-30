@@ -1,11 +1,14 @@
 source ~/.bash_secrets
 source ~/.nvm/nvm.sh
+source ~/.rvm/scripts/rvm
+
 
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.npm/bin
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:~/.gem//bin
 export GOPATH=~/Go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
@@ -83,9 +86,11 @@ if [ -e /home/cameron/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cameron/
 export WINEPREFIX=/media/cameron/Second\ Drive/wine
 
 past_commit() {
-    export GIT_COMMITTER_DATE=$(date -d "$1")
-    export GIT_AUTHOR_DATE=$(date -d "$1")
+    export GIT_COMMITTER_DATE=$(gdate -d "$1")
+    export GIT_AUTHOR_DATE=$(gdate -d "$1")
     git commit "${@:2}"
+    unset GIT_AUTHOR_DATE
+    unset GIT_COMMITTER_DATE
 }
 
 if [ -d "/media/cameron/SecondDrive/adb-fastboot/platform-tools" ] ; then
@@ -93,3 +98,5 @@ if [ -d "/media/cameron/SecondDrive/adb-fastboot/platform-tools" ] ; then
 fi
 
 export PATH="$HOME/.tfenv/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
