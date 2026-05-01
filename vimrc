@@ -303,7 +303,7 @@ require('avante').setup({
             __inherited_from = "openai",
             api_key_name = "DEEPSEEK_API_KEY",
             endpoint = "https://api.deepseek.com",
-            model = "deepseek-coder",
+            model = "deepseek-v4-pro",
         },
         claude = {
             endpoint = "https://api.anthropic.com",
@@ -331,7 +331,10 @@ require('avante').setup({
             switch_windows = 'fuck you',
         },
     },
-    override_prompt_dir = vim.fn.expand("~/.config/nvim/avante_prompts"),
+    rules = {
+        global_dir = vim.fn.expand('~/.config/nvim/avante_prompts'),
+        project_dir = '.avante/rules',
+    },
     system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
         return hub and hub:get_active_servers_prompt() or ""
