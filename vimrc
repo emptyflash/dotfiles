@@ -303,7 +303,7 @@ require('avante').setup({
             __inherited_from = "openai",
             api_key_name = "DEEPSEEK_API_KEY",
             endpoint = "https://api.deepseek.com",
-            model = "deepseek-v4-pro",
+            model = "deepseek-coder",
         },
         claude = {
             endpoint = "https://api.anthropic.com",

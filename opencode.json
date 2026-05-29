@@ -1,0 +1,75 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+      "explore": {
+          "model": "deepseek/deepseek-v4-flash",
+          "mode": "subagent"
+      },
+      "general": {
+          "model": "deepseek/deepseek-v4-flash",
+          "mode": "subagent"
+      },
+      "vision": {
+          "model": "opencode/qwen3.6-plus",
+          "mode": "subagent",
+          "description": "Use when you need to understand, describe, or answer questions about images. This agent has strong vision capabilities and can analyze screenshots, diagrams, photos, and other visual content."
+      }
+  },
+  "mcp": {
+      "github": {
+          "type": "remote",
+          "url": "https://api.githubcopilot.com/mcp/",
+          "headers": {
+              "Authorization": "Bearer {env:GITHUB_SANCTU_ACCESS_TOKEN}"
+          }
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "chrome-devtools-mcp@latest"
+        ]
+      },
+      "playwright": {
+        "type": "local",
+        "command": [
+          "npx",
+          "@playwright/mcp@latest"
+        ]
+      },
+      "expo": {
+        "type": "remote",
+        "url": "https://mcp.expo.dev/mcp",
+        "oauth": {}
+      },
+      "mobile-next": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@mobilenext/mobile-mcp@latest"
+        ]
+      },
+      "sanctu-figma": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "figma-developer-mcp",
+          "--figma-api-key={env:SANCTU_FIGMA_API_KEY}",
+          "--stdio"
+        ]
+      },
+      "cam-figma": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "figma-developer-mcp",
+          "--figma-api-key={env:CAM_FIGMA_API_KEY}",
+          "--stdio"
+        ]
+      }
+  }
+}
