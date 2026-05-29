@@ -16,13 +16,6 @@
       }
   },
   "mcp": {
-      "github": {
-          "type": "remote",
-          "url": "https://api.githubcopilot.com/mcp/",
-          "headers": {
-              "Authorization": "Bearer {env:GITHUB_SANCTU_ACCESS_TOKEN}"
-          }
-      },
       "chrome-devtools": {
         "type": "local",
         "command": [
@@ -70,6 +63,22 @@
           "--figma-api-key={env:CAM_FIGMA_API_KEY}",
           "--stdio"
         ]
+      },
+      "sanctu-github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "oauth": false,
+        "headers": {
+            "Authorization": "Bearer {env:GITHUB_SANCTU_ACCESS_TOKEN}"
+        }
+      },
+      "cam-github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "oauth": false,
+        "headers": {
+            "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+        }
       }
   }
 }
